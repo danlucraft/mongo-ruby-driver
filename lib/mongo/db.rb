@@ -170,7 +170,7 @@ module Mongo
             raise ConfigurationError, "Trying to connect directly to slave; if this is what you want, specify :slave_ok => true."
           end
           @slave_ok || is_master
-        rescue SocketError, SystemCallError, IOError => ex
+        rescue SocketError, SystemCallError, IOError, ConfigurationError => ex
           close if @socket
           false
         end
